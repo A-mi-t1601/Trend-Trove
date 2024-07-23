@@ -18,7 +18,7 @@ const Home = () => {
         <ProductCard
           productId="01"
           name="MacBook"
-          price={4454}
+          price={44544}
           stock={435}
           handler={addToCartHandler}
           photo="https://m.media-amazon.com/images/I/71jG+e7roXL._SX679_.jpg"
