@@ -29,7 +29,6 @@ ChartJS.register(
 );
 
 const months = ["January", "February", "March", "April", "May", "June", "July"];
-
 interface BarChartProps {
   horizontal?: boolean;
   data_1: number[];
@@ -99,7 +98,6 @@ export const BarChart = ({
       },
     ],
   };
-
   return <Bar width={horizontal ? "200%" : ""} options={options} data={data} />;
 };
 
@@ -111,7 +109,6 @@ interface DoughnutChartProps {
   legends?: boolean;
   offset?: number[];
 }
-
 export const DoughnutChart = ({
   labels,
   data,
@@ -145,7 +142,6 @@ export const DoughnutChart = ({
     },
     cutout,
   };
-
   return <Doughnut data={doughnutData} options={doughnutOptions} />;
 };
 
@@ -181,7 +177,6 @@ export const PieChart = ({
       },
     },
   };
-
   return <Pie data={pieChartData} options={pieChartOptions} />;
 };
 
@@ -192,7 +187,6 @@ interface LineChartProps {
   borderColor: string;
   labels?: string[];
 }
-
 export const LineChart = ({
   data,
   label,
@@ -238,6 +232,5 @@ export const LineChart = ({
       },
     ],
   };
-
   return <Line options={options} data={lineChartData} />;
 };

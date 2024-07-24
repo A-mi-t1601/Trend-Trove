@@ -17,7 +17,7 @@ const Dashboard = () => {
       <main className="dashboard">
         <div className="bar">
           <BsSearch />
-          <input type="text" placeholder="Search for data, users, docs" />
+          <input type="text" placeholder="Search for Data, Users, Docs" />
           <FaRegBell />
           <img src={userImg} alt="User" />
         </div>
