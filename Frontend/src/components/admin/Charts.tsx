@@ -109,6 +109,7 @@ interface DoughnutChartProps {
   legends?: boolean;
   offset?: number[];
 }
+
 export const DoughnutChart = ({
   labels,
   data,
@@ -151,6 +152,7 @@ interface PieChartProps {
   backgroundColor: string[];
   offset?: number[];
 }
+
 export const PieChart = ({
   labels,
   data,

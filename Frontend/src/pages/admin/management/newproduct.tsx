@@ -8,10 +8,8 @@ const NewProduct = () => {
   const [stock, setStock] = useState<number>(1);
   const [photoPrev, setPhotoPrev] = useState<string>("");
   const [photo, setPhoto] = useState<File>();
-
   const changeImageHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const file: File | undefined = e.target.files?.[0];
-
     const reader: FileReader = new FileReader();
 
     if (file) {
@@ -41,6 +39,7 @@ const NewProduct = () => {
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
+
             <div>
               <label>Price</label>
               <input
@@ -50,6 +49,7 @@ const NewProduct = () => {
                 onChange={(e) => setPrice(Number(e.target.value))}
               />
             </div>
+
             <div>
               <label>Stock</label>
               <input

@@ -31,6 +31,7 @@ const arr: Array<DataType> = [
     quantity: 6,
     action: <Link to="/admin/transaction/sajknaskd">Manage</Link>,
   },
+
   {
     user: "Xavirors",
     amount: 6999,
@@ -70,7 +71,6 @@ const columns: Column<DataType>[] = [
 
 const Transaction = () => {
   const [rows, setRows] = useState<DataType[]>(arr);
-
   const Table = TableHOC<DataType>(
     columns,
     rows,

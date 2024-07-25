@@ -30,12 +30,14 @@ const Dashboard = () => {
             heading="Revenue"
             color="rgb(0, 115, 255)"
           />
+
           <WidgetItem
             percent={-14}
             value={400}
             color="rgb(0 198 202)"
             heading="Users"
           />
+
           <WidgetItem
             percent={80}
             value={23000}
@@ -66,7 +68,6 @@ const Dashboard = () => {
 
           <div className="dashboard-categories">
             <h2>Inventory</h2>
-
             <div>
               {data.categories.map((i) => (
                 <CategoryItem
@@ -96,6 +97,7 @@ const Dashboard = () => {
               <BiMaleFemale />
             </p>
           </div>
+
           <Table data={data.transaction} />
         </section>
       </main>

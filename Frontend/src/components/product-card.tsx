@@ -10,7 +10,6 @@ type ProductsProps = {
 };
 
 const server = "Amit";
-
 const ProductCard = ({
   productId,
   price,

@@ -12,9 +12,7 @@ const Coupon = () => {
   const [includeCharacters, setIncludeCharacters] = useState<boolean>(false);
   const [includeSymbols, setIncludeSymbols] = useState<boolean>(false);
   const [isCopied, setIsCopied] = useState<boolean>(false);
-
   const [coupon, setCoupon] = useState<string>("");
-
   const copyText = async (coupon: string) => {
     await window.navigator.clipboard.writeText(coupon);
     setIsCopied(true);
@@ -22,13 +20,11 @@ const Coupon = () => {
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     if (!includeNumbers && !includeCharacters && !includeSymbols)
       return alert("Please Select One At Least");
 
     let result: string = prefix || "";
     const loopLength: number = size - result.length;
-
     for (let i = 0; i < loopLength; i++) {
       let entireString: string = "";
       if (includeCharacters) entireString += allLetters;
@@ -38,7 +34,6 @@ const Coupon = () => {
       const randomNum: number = ~~(Math.random() * entireString.length);
       result += entireString[randomNum];
     }
-
     setCoupon(result);
   };
 

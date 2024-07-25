@@ -21,7 +21,6 @@ const Productmanagement = () => {
 
   const changeImageHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const file: File | undefined = e.target.files?.[0];
-
     const reader: FileReader = new FileReader();
 
     if (file) {
@@ -58,6 +57,7 @@ const Productmanagement = () => {
           )}
           <h3>₹{price}</h3>
         </section>
+
         <article>
           <button className="product-delete-btn">
             <FaTrash />
@@ -73,6 +73,7 @@ const Productmanagement = () => {
                 onChange={(e) => setNameUpdate(e.target.value)}
               />
             </div>
+
             <div>
               <label>Price</label>
               <input
@@ -82,6 +83,7 @@ const Productmanagement = () => {
                 onChange={(e) => setPriceUpdate(Number(e.target.value))}
               />
             </div>
+
             <div>
               <label>Stock</label>
               <input

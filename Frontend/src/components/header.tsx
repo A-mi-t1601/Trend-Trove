@@ -9,7 +9,6 @@ import {
 import { Link } from "react-router-dom";
 
 const user = { _id: "amit", role: "admin" };
-
 const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const logoutHandler = () => {

@@ -1,7 +1,7 @@
 const Loader = () => {
   return (
     <section className="loader">
-      <div></div>
+      <div>Loader</div>
     </section>
   );
 };

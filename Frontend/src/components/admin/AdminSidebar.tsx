@@ -20,12 +20,10 @@ import { MdDiscount } from "react-icons/md";
 
 const AdminSidebar = () => {
   const location = useLocation();
-
   const [showModal, setShowModal] = useState<boolean>(false);
   const [phoneActive, setPhoneActive] = useState<boolean>(
     window.innerWidth < 1100
   );
-
   const resizeHandler = () => {
     setPhoneActive(window.innerWidth < 1100);
   };

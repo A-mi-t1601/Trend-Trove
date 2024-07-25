@@ -3,7 +3,6 @@ import AdminSidebar from "../../../components/admin/AdminSidebar";
 
 const Toss = () => {
   const [angle, setAngle] = useState<number>(0);
-
   const flipCoin = () => {
     if (Math.random() > 0.5) setAngle((prev) => prev + 180);
     else setAngle((prev) => prev + 360);

@@ -48,6 +48,7 @@ const Search = () => {
           </select>
         </div>
       </aside>
+
       <main>
         <h1>Products</h1>
         <input
