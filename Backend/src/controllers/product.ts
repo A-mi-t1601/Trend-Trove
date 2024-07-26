@@ -21,6 +21,7 @@ export const getLatestProduct = TryCatch(async (req, res, next) => {
     product = await Product.find({}).sort({ createdAt: -1 }).limit(5);
     myCache.set("latest-product", JSON.stringify(product));
   }
+
   return res.status(200).json({
     success: true,
     product,
@@ -36,6 +37,7 @@ export const getAllCategories = TryCatch(async (req, res, next) => {
     const categories = await Product.distinct("category");
     myCache.set("categories", JSON.stringify(categories));
   }
+
   return res.status(200).json({
     success: true,
     categories,
@@ -51,6 +53,7 @@ export const getAdminProduct = TryCatch(async (req, res, next) => {
     product = await Product.find({});
     myCache.set("all-product", JSON.stringify(product));
   }
+
   return res.status(200).json({
     success: true,
     product,
@@ -67,6 +70,7 @@ export const getSingleProduct = TryCatch(async (req, res, next) => {
     if (!product) return next(new ErrorHandler("Product Not Found", 404));
     myCache.set(`product-${id}`, JSON.stringify(product));
   }
+
   return res.status(200).json({
     success: true,
     product,
@@ -77,12 +81,12 @@ export const NewProduct = TryCatch(
   async (req: Request<{}, {}, NewProductRequestBody>, res, next) => {
     const { name, price, stock, category } = req.body;
     const photo = req.file;
-
     if (!photo) return next(new ErrorHandler("Please Add Photo", 400));
     if (!name || !price || !stock || !category) {
       rm(photo.path, () => {
         console.log("Deleted");
       });
+
       return next(new ErrorHandler("Please Enter All Field Details", 400));
     }
 
@@ -94,6 +98,7 @@ export const NewProduct = TryCatch(
       photo: photo.path,
     });
     await invalidateCache({ product: true });
+
     return res.status(201).json({
       success: true,
       message: "Product Created Successfully",
@@ -120,7 +125,8 @@ export const updateProduct = TryCatch(async (req, res, next) => {
   if (category) product.category = category;
 
   await product.save();
-  await invalidateCache({ product: true });
+  await invalidateCache({ product: true, productId: String(product._id) });
+
   return res.status(200).json({
     success: true,
     message: "Product Updated Successfully",
@@ -133,8 +139,10 @@ export const deleteProduct = TryCatch(async (req, res, next) => {
   rm(product.photo!, () => {
     console.log("Product Photo Deleted");
   });
+
   await Product.deleteOne();
-  await invalidateCache({ product: true });
+  await invalidateCache({ product: true, productId: String(product._id) });
+
   return res.status(200).json({
     success: true,
     message: "Product Deleted Successfully",

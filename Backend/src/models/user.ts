@@ -67,6 +67,7 @@ schema.virtual("age").get(function () {
   ) {
     age--;
   }
+
   return age;
 });
 
