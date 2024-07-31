@@ -1,7 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import Loader from "./components/loader";
 import Header from "./components/header";
+import { Toaster } from "react-hot-toast";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase";
+import { useDispatch, useSelector } from "react-redux";
+import { userExist, userNotExist } from "./redux/reducer/userReducer";
+import { getUser } from "./redux/api/userAPI";
+import { UserReducerInitialState } from "./types/reducer-types";
 
 const Home = lazy(() => import("./pages/home"));
 const Search = lazy(() => import("./pages/search"));
@@ -30,10 +37,26 @@ const TransactionManagement = lazy(
 );
 
 const App = () => {
-  return (
+  const { user, loading } = useSelector(
+    (state: { userReducer: UserReducerInitialState }) => state.userReducer
+  );
+  const dispatch = useDispatch();
+  useEffect(() => {
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const data = await getUser(user.uid);
+        console.log("Logged In");
+        dispatch(userExist(data.user));
+      } else dispatch(userNotExist());
+    });
+  }, []);
+
+  return loading ? (
+    <Loader />
+  ) : (
     <Router>
       {/* HEADER */}
-      <Header />
+      <Header user={user} />
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -82,6 +105,7 @@ const App = () => {
           ;
         </Routes>
       </Suspense>
+      <Toaster position="bottom-center" />
     </Router>
   );
 };
