@@ -177,7 +177,7 @@ export const getDashboardStats = TryCatch(async (req, res, next) => {
     }));
 
     stats = {
-      categories,
+      // categories,
       categoryCount,
       changePercent,
       count,
@@ -355,8 +355,8 @@ export const getBarCharts = TryCatch(async (req, res, next) => {
     const ordersCounts = getChartData({ length: 12, today, docArr: orders });
 
     charts = {
-      product: productCounts,
       users: usersCounts,
+      products: productCounts,
       orders: ordersCounts,
     };
 
@@ -408,8 +408,8 @@ export const getLineCharts = TryCatch(async (req, res, next) => {
     });
 
     charts = {
-      product: productCounts,
       users: usersCounts,
+      products: productCounts,
       discount,
       revenue,
     };

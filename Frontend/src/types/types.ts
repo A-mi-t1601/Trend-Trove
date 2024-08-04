@@ -51,3 +51,76 @@ export type Order = {
   };
   _id: string;
 };
+
+type CountAndChange = {
+  revenue: number;
+  product: number;
+  user: number;
+  order: number;
+};
+type LatestTransaction = {
+  _id: string;
+  amount: number;
+  discount: number;
+  quantity: number;
+  status: string;
+};
+export type Stats = {
+  categoryCount: Record<string, number>[];
+  changePercent: CountAndChange;
+  count: CountAndChange;
+  chart: {
+    order: number[];
+    revenue: number[];
+  };
+  userRatio: {
+    male: number;
+    female: number;
+  };
+  latestTransaction: LatestTransaction[];
+};
+
+type UserAgeGroup = {
+  teen: number;
+  adult: number;
+  old: number;
+};
+type OrderFullFillment = {
+  processing: number;
+  shipped: number;
+  delivered: number;
+};
+type RevenueDistribution = {
+  netMargin: number;
+  discount: number;
+  productionCost: number;
+  burnt: number;
+  marketingCost: number;
+};
+export type Pie = {
+  orderFullfillment: OrderFullFillment;
+  productCategories: Record<string, number>[];
+  stockAvailablity: {
+    inStock: number;
+    outOfStock: number;
+  };
+  revenueDistribution: RevenueDistribution;
+  usersAgeGroup: UserAgeGroup;
+  adminCustomer: {
+    admin: number;
+    customer: number;
+  };
+};
+
+export type Bar = {
+  users: number[];
+  products: number[];
+  orders: number[];
+};
+
+export type Line = {
+  users: number[];
+  products: number[];
+  discount: number[];
+  revenue: number[];
+};
