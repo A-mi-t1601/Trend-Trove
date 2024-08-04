@@ -30,6 +30,15 @@ build/Release
 # Dependency directories
 node_modules
 jspm_packages
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
 
 # Optional npm cache directory
 .npm

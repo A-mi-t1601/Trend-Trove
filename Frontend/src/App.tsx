@@ -1,4 +1,5 @@
 import { onAuthStateChanged } from "firebase/auth";
+// import { signOut } from "firebase/auth";
 import { lazy, Suspense, useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
@@ -43,6 +44,7 @@ const App = () => {
   const { user } = useSelector(
     (state: { userReducer: UserReducerInitialState }) => state.userReducer
   );
+  // return signOut(auth).then((c) => console.log("Done"));
   const dispatch = useDispatch();
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {
