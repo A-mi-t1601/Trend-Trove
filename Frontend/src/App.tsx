@@ -40,7 +40,7 @@ const TransactionManagement = lazy(
 );
 
 const App = () => {
-  const { user, loading } = useSelector(
+  const { user } = useSelector(
     (state: { userReducer: UserReducerInitialState }) => state.userReducer
   );
   const dispatch = useDispatch();
@@ -53,9 +53,7 @@ const App = () => {
     });
   }, []);
 
-  return loading ? (
-    <Loader />
-  ) : (
+  return (
     <Router>
       {/* HEADER */}
       <Header user={user} />
