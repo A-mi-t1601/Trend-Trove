@@ -1,17 +1,17 @@
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
+  ArcElement,
   BarElement,
+  CategoryScale,
+  ChartData,
+  Chart as ChartJS,
+  ChartOptions,
+  Filler,
+  Legend,
+  LinearScale,
+  LineElement,
+  PointElement,
   Title,
   Tooltip,
-  Legend,
-  ChartData,
-  ChartOptions,
-  ArcElement,
-  PointElement,
-  LineElement,
-  Filler,
 } from "chart.js";
 import { Bar, Doughnut, Line, Pie } from "react-chartjs-2";
 

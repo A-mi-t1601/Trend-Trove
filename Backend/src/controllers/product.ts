@@ -21,7 +21,6 @@ export const getLatestProduct = TryCatch(async (req, res, next) => {
     product = await Product.find({}).sort({ createdAt: -1 }).limit(5);
     myCache.set("latest-product", JSON.stringify(product));
   }
-
   return res.status(200).json({
     success: true,
     product,
@@ -37,7 +36,6 @@ export const getAllCategories = TryCatch(async (req, res, next) => {
     const categories = await Product.distinct("category");
     myCache.set("categories", JSON.stringify(categories));
   }
-
   return res.status(200).json({
     success: true,
     categories,
@@ -53,7 +51,6 @@ export const getAdminProduct = TryCatch(async (req, res, next) => {
     product = await Product.find({});
     myCache.set("all-product", JSON.stringify(product));
   }
-
   return res.status(200).json({
     success: true,
     product,
@@ -70,7 +67,6 @@ export const getSingleProduct = TryCatch(async (req, res, next) => {
     if (!product) return next(new ErrorHandler("Product Not Found", 404));
     myCache.set(`product-${id}`, JSON.stringify(product));
   }
-
   return res.status(200).json({
     success: true,
     product,
@@ -86,7 +82,6 @@ export const NewProduct = TryCatch(
       rm(photo.path, () => {
         console.log("Deleted");
       });
-
       return next(new ErrorHandler("Please Enter All Field Details", 400));
     }
 
@@ -98,7 +93,6 @@ export const NewProduct = TryCatch(
       photo: photo.path,
     });
     invalidateCache({ product: true, admin: true });
-
     return res.status(201).json({
       success: true,
       message: "Product Created Successfully",
@@ -130,7 +124,6 @@ export const updateProduct = TryCatch(async (req, res, next) => {
     productId: String(product._id),
     admin: true,
   });
-
   return res.status(200).json({
     success: true,
     message: "Product Updated Successfully",
@@ -150,7 +143,6 @@ export const deleteProduct = TryCatch(async (req, res, next) => {
     productId: String(product._id),
     admin: true,
   });
-
   return res.status(200).json({
     success: true,
     message: "Product Deleted Successfully",
@@ -186,7 +178,6 @@ export const getAllProduct = TryCatch(
       Product.find(baseQuery),
     ]);
     const totalPage = Math.ceil(filteredOnlyProduct.length / limit);
-
     return res.status(200).json({
       success: true,
       product,

@@ -1,13 +1,13 @@
 import {
+  Bar,
   CartItem,
+  Line,
   Order,
+  Pie,
   Product,
   ShippingInfo,
   Stats,
   User,
-  Pie,
-  Bar,
-  Line,
 } from "./types";
 
 export type CustomError = {

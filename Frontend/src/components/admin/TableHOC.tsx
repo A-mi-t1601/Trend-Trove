@@ -4,10 +4,10 @@ import {
 } from "react-icons/ai";
 import {
   Column,
+  TableOptions,
   usePagination,
   useSortBy,
   useTable,
-  TableOptions,
 } from "react-table";
 
 function TableHOC<T extends Object>(

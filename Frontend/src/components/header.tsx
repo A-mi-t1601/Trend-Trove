@@ -1,4 +1,6 @@
+import { signOut } from "firebase/auth";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import {
   FaSearch,
   FaShoppingBag,
@@ -7,10 +9,8 @@ import {
   FaUser,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { User } from "../types/types";
-import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
-import toast from "react-hot-toast";
+import { User } from "../types/types";
 
 // const user = { _id: "", role: "" };
 

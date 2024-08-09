@@ -177,7 +177,7 @@ export const getDashboardStats = TryCatch(async (req, res, next) => {
     }));
 
     stats = {
-      // categories,
+      //categories,
       categoryCount,
       changePercent,
       count,
@@ -191,7 +191,6 @@ export const getDashboardStats = TryCatch(async (req, res, next) => {
 
     myCache.set(key, JSON.stringify(stats));
   }
-
   return res.status(200).json({
     success: true,
     stats,
@@ -267,7 +266,6 @@ export const getPieCharts = TryCatch(async (req, res, next) => {
     );
 
     const burnt = allOrders.reduce((prev, order) => prev + (order.tax || 0), 0);
-
     const marketingCost = Math.round(grossIncome * (30 / 100));
 
     const netMargin =
@@ -303,7 +301,6 @@ export const getPieCharts = TryCatch(async (req, res, next) => {
 
     myCache.set(key, JSON.stringify(charts));
   }
-
   return res.status(200).json({
     success: true,
     charts,
@@ -316,7 +313,6 @@ export const getBarCharts = TryCatch(async (req, res, next) => {
   if (myCache.has(key)) charts = JSON.parse(myCache.get(key) as string);
   else {
     const today = new Date();
-
     const sixMonthAgo = new Date();
     sixMonthAgo.setMonth(sixMonthAgo.getMonth() - 6);
 
@@ -362,7 +358,6 @@ export const getBarCharts = TryCatch(async (req, res, next) => {
 
     myCache.set(key, JSON.stringify(charts));
   }
-
   return res.status(200).json({
     success: true,
     charts,
@@ -375,7 +370,6 @@ export const getLineCharts = TryCatch(async (req, res, next) => {
   if (myCache.has(key)) charts = JSON.parse(myCache.get(key) as string);
   else {
     const today = new Date();
-
     const twelveMonthAgo = new Date();
     twelveMonthAgo.setMonth(twelveMonthAgo.getMonth() - 12);
 
@@ -394,12 +388,14 @@ export const getLineCharts = TryCatch(async (req, res, next) => {
 
     const productCounts = getChartData({ length: 12, today, docArr: products });
     const usersCounts = getChartData({ length: 12, today, docArr: users });
+
     const discount = getChartData({
       length: 12,
       today,
       docArr: orders,
       property: "discount",
     });
+
     const revenue = getChartData({
       length: 12,
       today,
@@ -416,7 +412,6 @@ export const getLineCharts = TryCatch(async (req, res, next) => {
 
     myCache.set(key, JSON.stringify(charts));
   }
-
   return res.status(200).json({
     success: true,
     charts,

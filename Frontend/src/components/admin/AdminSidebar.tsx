@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { IconType } from "react-icons";
 import { AiFillFileText } from "react-icons/ai";
 import {
   FaChartBar,
@@ -9,14 +10,13 @@ import {
 } from "react-icons/fa";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { IoIosPeople } from "react-icons/io";
+import { MdDiscount } from "react-icons/md";
 import {
   RiCoupon3Fill,
   RiDashboardFill,
   RiShoppingBag3Fill,
 } from "react-icons/ri";
 import { Link, Location, useLocation } from "react-router-dom";
-import { IconType } from "react-icons";
-import { MdDiscount } from "react-icons/md";
 
 const AdminSidebar = () => {
   const location = useLocation();
@@ -81,24 +81,28 @@ const DivOne = ({ location }: { location: Location }) => (
         Icon={RiDashboardFill}
         location={location}
       />
+
       <Li
         url="/admin/product"
         text="Product"
         Icon={RiShoppingBag3Fill}
         location={location}
       />
+
       <Li
         url="/admin/customer"
         text="Customer"
         Icon={IoIosPeople}
         location={location}
       />
+
       <Li
         url="/admin/transaction"
         text="Transaction"
         Icon={AiFillFileText}
         location={location}
       />
+
       <Li
         url="/admin/discount"
         text="Discount"
@@ -119,12 +123,14 @@ const DivTwo = ({ location }: { location: Location }) => (
         Icon={FaChartBar}
         location={location}
       />
+
       <Li
         url="/admin/chart/pie"
         text="Pie"
         Icon={FaChartPie}
         location={location}
       />
+
       <Li
         url="/admin/chart/line"
         text="Line"
@@ -145,12 +151,14 @@ const DivThree = ({ location }: { location: Location }) => (
         Icon={FaStopwatch}
         location={location}
       />
+
       <Li
         url="/admin/app/coupon"
         text="Coupon"
         Icon={RiCoupon3Fill}
         location={location}
       />
+
       <Li
         url="/admin/app/toss"
         text="Toss"

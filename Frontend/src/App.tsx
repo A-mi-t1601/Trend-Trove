@@ -64,6 +64,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<Search />} />
           <Route path="/cart" element={<Cart />} />
+
           {/* Not LOgged In Route */}
           <Route
             path="/login"
@@ -73,6 +74,7 @@ const App = () => {
               </ProtectedRoute>
             }
           />
+
           {/* Logged In User Route */}
           <Route
             element={<ProtectedRoute isAuthenticated={user ? true : false} />}
@@ -82,6 +84,7 @@ const App = () => {
             <Route path="/pay" element={<Checkout />} />
             {/* <Route path="/orders/:id" element={<OrdersDetails />} /> */}
           </Route>
+
           {/* Admin Routes */}
           <Route
             element={
